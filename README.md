@@ -3,4 +3,4 @@ Trabajo sobre la API de Entornos de Desarrollo
 
 ## Prueba del commit
 
-El trabajo es de pablo la chupa y fer
+El trabajo es de pablo y fer
