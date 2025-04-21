@@ -28,4 +28,3 @@ CREATE TABLE coche (
 );
 
 
-También he usado IA para pedirle 10 matriculas, 10 marcas, 10 modelos , 10 colores, 10 precios y el stock y los kilometros , para ahorrar tiempo ya que esto no influye en el codigo
