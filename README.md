@@ -31,3 +31,5 @@ CREATE TABLE coche (
 ## Creado Inicio HTMl
 - Hemos usado los apuntes de Don ciro, posiblemente se deba ir modificando esta página según los endpoints.
 
+##
+- Hemos creado main.py, requirements y vinculado con templates a la pagina de inicio html, para esto hemos usado [Real Python](https://realpython.com) traducida y pregunta sobrecomo vincularlo a la Ia.
