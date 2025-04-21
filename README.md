@@ -31,5 +31,9 @@ CREATE TABLE coche (
 ## Creado Inicio HTMl
 - Hemos usado los apuntes de Don ciro, posiblemente se deba ir modificando esta página según los endpoints.
 
-##
+## Creación del main.py
 - Hemos creado main.py, requirements y vinculado con templates a la pagina de inicio html, para esto hemos usado [Real Python](https://realpython.com) traducida y pregunta sobrecomo vincularlo a la Ia.
+
+## Creación de endpoints y modificación de html 
+
+-hemos creado nuevos endpoints, buscar, borrar, añadir, (con mensajes de error), hemos adaptado el html para ello mediante formularios, utilizado render_template, se ha usado [Flask palletsprojects](https://flask.palletsprojects.com/en/latest/quickstart/#rendering-templates), además de  [digital ocean](https://www.digitalocean.com/community/tutorials/how-to-use-templates-in-a-flask-application), además de la IA parala correcta aplicación y dudas de uso.
