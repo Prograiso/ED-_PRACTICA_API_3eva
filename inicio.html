@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Coches</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid white;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: white;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            max-width: 400px;
+        }
+        label {
+            margin-bottom: 5px;
+        }
+        input, button {
+            margin-bottom: 10px;
+            padding: 8px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Gestión de Coches</h1>
+
+    <h2>Listado de Coches</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Matrícula</th>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Color</th>
+                <th>Precio</th>
+                <th>Stock</th>
+                <th>Kilómetros</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            <tr>
+                <td>1234ABC</td>
+                <td>Ford</td>
+                <td>Focus</td>
+                <td>Rojo</td>
+                <td>15000.00</td>
+                <td>5</td>
+                <td>20000</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Agregar Nuevo Coche</h2>
+    <form action="/add-car" method="POST">
+        <label for="matricula">Matrícula:</label>
+        <input type="text" id="matricula" name="matricula" maxlength="7" required>
+
+        <label for="marca">Marca:</label>
+        <input type="text" id="marca" name="marca" maxlength="40" required>
+
+        <label for="modelo">Modelo:</label>
+        <input type="text" id="modelo" name="modelo" maxlength="40" required>
+
+        <label for="color">Color:</label>
+        <input type="text" id="color" name="color" maxlength="20" required>
+
+        <label for="precio">Precio:</label>
+        <input type="number" id="precio" name="precio" required>
+
+        <label for="stock">Stock:</label>
+        <input type="number" id="stock" name="stock" required>
+
+        <label for="kilometros">Kilómetros:</label>
+        <input type="number" id="kilometros" name="kilometros" required>
+
+        <button type="submit">Agregar Coche</button>
+    </form>
+</body>
+</html>
