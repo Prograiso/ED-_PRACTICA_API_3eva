@@ -99,7 +99,7 @@
     <h2>Buscar coches</h2>
 
 
-        <form method="POST" action="/buscar">
+        <form method="GET" action="/buscar">
             <label for="parametro">Buscar por:</label>
             <select id="parametro" name="parametro" required>
                 <option value="marca">Marca</option>
@@ -115,7 +115,7 @@
 
     <h2>Eliminar un coche</h2>
 
-        <form method="POST" action="/borrar">
+        <form method="DELETE" action="/borrar">
             <label for="matricula">Matrícula del coche a eliminar:</label>
             <input type="text" id="matricula" name="matricula" required>
             <button type="submit">Eliminar</button>
