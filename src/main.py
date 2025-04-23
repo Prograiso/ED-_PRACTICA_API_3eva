@@ -3,10 +3,8 @@
 
 from flask import Flask, request, send_file
 from flask_cors import CORS
-import sqlite3
+from JGVutils import SQLiteConnection 
 
-def get_connection():
-    return sqlite3.connect("baseDeDatos.db")
 
 
 
@@ -24,38 +22,57 @@ def inicio():
 
 @application.route("/conexion", methods=["GET"])
 def devolver_coches():
-    conexion = SQLiteConnection("baseDeDatos.db")
+    conexion = SQLiteConnection("BaseDeDatos.db")
     coche = conexion.execute_query("SELECT * FROM coche")
     return coche
+
+
+
+#añadir a la base de datos
+
+@application.route("/add-car", methods = ["POST"])
+def add_coche():
+    datos= request.form
+    matricula = datos["matricula"]
+    marca = datos["marca"]
+    modelo = datos["modelo"]
+    color = datos["color"]
+    precio = datos["precio"]
+    stock = datos["stock"]
+    kilometros = datos["kilometros"]
+    conexion = SQLiteConnection("BaseDeDatos.db")
+    conexion.execute_query("INSERT INTO coche (matricula,marca,modelo,color,precio,stock,kilometros) VALUES (?,?,?,?,?,?,?)",[matricula,marca,modelo,color,precio,stock,kilometros])
+    return "Se ha añadido correctamente"
+
 
 #eliminar coche de la db
 @application.route("/borrar", methods=["POST"])
 def borrar_coche():
     matricula = request.form.get("matricula")
     if not matricula:
-        return render_template("inicio.html", error="Debes proporcionar una matrícula")
+        return send_file("inicio.html", error="Debes proporcionar una matrícula")
 
     conexion = SQLiteConnection("baseDeDatos.db")
     query = "DELETE FROM coche WHERE matricula = ?"
     try:
         conexion.execute_query(query, (matricula,))
         mensaje = f"Coche con matrícula {matricula} eliminado correctamente"
-        return render_template("inicio.html", mensaje=mensaje)
+        return send_file("inicio.html", mensaje=mensaje)
     except Exception as e:
-        return render_template("inicio.html", error=str(e))
+        return send_file("inicio.html", error=str(e))
 
 #buscar coche en la db
-@application.route("/buscar", methods=["POST"])
+@application.route("/buscar", methods=["GET"])
 def buscar_coches():
     parametro = request.form.get("parametro")
     valor = request.form.get("valor")
     if not parametro or not valor:
-        return render_template("inicio.html", error="Faltan parámetros de búsqueda", coches=[])
+        return send_file("inicio.html", error="Faltan parámetros de búsqueda", coches=[])
 
     conexion = SQLiteConnection("baseDeDatos.db")
     query = f"SELECT * FROM coche WHERE {parametro} LIKE ?"
     try:
         coches = conexion.execute_query(query, (f"%{valor}%",))
-        return render_template("inicio.html", coches=coches)
+        return send_file("{coches}", coches=coches)
     except Exception as e:
-        return render_template("inicio.html", error=str(e), coches=[])
+        return "error, no se"
