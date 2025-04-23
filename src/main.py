@@ -1,8 +1,13 @@
 
 # IMPORTAR LIBRERÍAS
-from flask import Flask, request, render_template
+
+from flask import Flask, request, send_file
 from flask_cors import CORS
-from JGVutils import SQLiteConnection
+import sqlite3
+
+def get_connection():
+    return sqlite3.connect("baseDeDatos.db")
+
 
 
 # CONFIGURAR APLICACIÓN
@@ -11,9 +16,9 @@ cors = CORS(application)
 application.config["CORS_HEADERS"] = "Content-Type"
 
 #CONFIGURAR PAGINA
-@application.route("/inicio", methods=["GET"])
+@application.route("/", methods=["GET"])
 def inicio():
-    return render_template("inicio.html")
+    return send_file("\templates\inicio.html")
 
 #conexion a la base de datos
 
@@ -24,7 +29,7 @@ def devolver_coches():
     return coche
 
 #eliminar coche de la db
-@application.route("borrar", methods=["POST"])
+@application.route("/borrar", methods=["POST"])
 def borrar_coche():
     matricula = request.form.get("matricula")
     if not matricula:
