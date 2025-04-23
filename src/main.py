@@ -18,7 +18,7 @@ application.config["CORS_HEADERS"] = "Content-Type"
 #CONFIGURAR PAGINA
 @application.route("/", methods=["GET"])
 def inicio():
-    return send_file("\templates\inicio.html")
+    return send_file("inicio.html")
 
 #conexion a la base de datos
 
